@@ -7,6 +7,8 @@
 
 -export([info_lib/0, mpz_refeq/2]).
 
+-export_type([mpz_t/0, mpq_t/0, mpf_t/0]).
+
 {% for f in mpz %}{% include "priv/templates/export.erl" %}{% endfor %}
 {% for f in mpq %}{% include "priv/templates/export.erl" %}{% endfor %}
 {% for f in mpf %}{% include "priv/templates/export.erl" %}{% endfor %}
