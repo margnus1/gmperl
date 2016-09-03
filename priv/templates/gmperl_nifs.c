@@ -119,6 +119,7 @@ GMPERL_NIF_PROTOTYPE(gmperl_info_lib)
 static ErlNifFunc nif_funcs[] =
 {
     {"info_lib",         0, gmperl_info_lib},
+    {"mpz_refeq",        2, gmperl_mpz_refeq},
 {% for f in mpz %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
 {% for f in mpq %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
 {% for f in mpf %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
