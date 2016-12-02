@@ -6,6 +6,7 @@
 -on_load(init/0).
 
 -export([info_lib/0, mpz_refeq/2]).
+-export([mpz_import/7, mpz_export/5]).
 
 -export_type([mpz_t/0, mpq_t/0, mpf_t/0]).
 
@@ -31,6 +32,10 @@
 -spec info_lib() -> [{binary(), binary()}].
 
 -spec mpz_refeq(mpz_t(), mpz_t()) -> boolean().
+-spec mpz_import(mpz_t(), non_neg_integer(), -1 | 1, pos_integer(), -1 | 0 | 1,
+                 non_neg_integer(), binary()) -> ok.
+-spec mpz_export(-1 | 1, pos_integer(), -1 | 0 | 1, non_neg_integer(), mpz_t())
+                -> binary().
 
 {% for f in mpz %}{% include "priv/templates/spec.erl" %}{% endfor %}
 {% for f in mpq %}{% include "priv/templates/spec.erl" %}{% endfor %}
@@ -47,6 +52,8 @@ nif_stub_error(Line) -> erlang:nif_error({nif_not_loaded,module,?MODULE,line,Lin
 info_lib() -> ?ERR.
 
 mpz_refeq(_, _) -> ?ERR.
+mpz_import(_, _, _, _, _, _, _) -> ?ERR.
+mpz_export(_, _, _, _, _) -> ?ERR.
 
 {% for f in mpz %}{% include "priv/templates/nif.erl" %}{% endfor %}
 {% for f in mpq %}{% include "priv/templates/nif.erl" %}{% endfor %}

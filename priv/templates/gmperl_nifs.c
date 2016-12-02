@@ -120,6 +120,8 @@ static ErlNifFunc nif_funcs[] =
 {
     {"info_lib",         0, gmperl_info_lib},
     {"mpz_refeq",        2, gmperl_mpz_refeq},
+    {"mpz_import",       7, gmperl_mpz_import},
+    {"mpz_export",       5, gmperl_mpz_export},
 {% for f in mpz %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
 {% for f in mpq %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
 {% for f in mpf %}    {% include "priv/templates/nif_fun.c" %}{% endfor %}
