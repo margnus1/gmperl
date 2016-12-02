@@ -159,6 +159,12 @@ GMPERL_NIF_PROTOTYPE(gmperl_{{ f.name }})
     enif_free(val0);
     {% endifequal %}
 
+    {% if f.locals %}{% for l in f.locals %}
+    {% ifequal l.type "new_mpz_t" %}enif_release_resource(val{{ l.index }});{% endifequal %}
+    {% ifequal l.type "new_mpq_t" %}enif_release_resource(val{{ l.index }});{% endifequal %}
+    {% ifequal l.type "new_mpf_t" %}enif_release_resource(val{{ l.index }});{% endifequal %}
+    {% endfor %}{% endif %}
+
     return ret;
 
     {% if f.needs_badarg %}
