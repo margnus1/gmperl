@@ -3,5 +3,5 @@
   {vsn, "0.1"},
   {registered, []},
   {applications, [kernel, stdlib]},
-  {modules, [gmperl_nifs]},
+  {modules, [gmperl_nifs, gmperl_util]},
   {env, []}]}.
